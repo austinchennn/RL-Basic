@@ -11,7 +11,7 @@
 假设要计算函数 $f(x)$ 在概率密度函数 $p(x)$ 下的期望（也就是一个积分）：
 
 $$
-I = \int f(x)\, p(x)\, dx = \mathbb{E}_{X \sim p}\left[ f(X) \right]
+I = \int f(x) p(x) \ dx = \mathbb{E}_{X \sim p}\left[ f(X) \right]
 $$
 
 这个积分本质上就是随机变量 $f(X)$ 的数学期望 $\mathbb{E}[f(X)]$。根据**大数定律**，当样本数量足够多时，样本的算术平均会收敛到真实期望。
@@ -26,12 +26,12 @@ $$
 \hat{I}_N = \frac{1}{N} \sum_{i=1}^{N} f(x_i)
 $$
 
-只要 $N$ 足够大，$\hat{I}_N$ 就会非常接近真实的积分值 $I$。
+只要 $N$ 足够大， $\hat{I}_N$ 就会非常接近真实的积分值 $I$。
 
 ### 估计量的性质
 
-- **无偏**：$\mathbb{E}[\hat{I}_N] = I$，平均来看估计是准的。
-- **方差**：$\mathrm{Var}[\hat{I}_N] = \dfrac{\sigma^2}{N}$，其中 $\sigma^2 = \mathrm{Var}[f(X)]$。
+- **无偏**： $\mathbb{E}[\hat{I}_N] = I$，平均来看估计是准的。
+- **方差**： $\mathrm{Var}[\hat{I}_N] = \dfrac{\sigma^2}{N}$，其中 $\sigma^2 = \mathrm{Var}[f(X)]$。
 - **误差量级**：标准差为 $\dfrac{\sigma}{\sqrt{N}}$，即误差 $\sim O(1/\sqrt{N})$。样本数变成 4 倍，误差减半。这个速率和 $x$ 的维度无关，第 3 节"维度诅咒"一条依据的就是这一点。
 
 ---
@@ -41,7 +41,7 @@ $$
 连续动作空间下，状态价值函数是一个积分（见 [04-价值函数.md](../基础概念/04-价值函数.md)）：
 
 $$
-V_\pi(s) = \int \pi(a \mid s) \cdot Q_\pi(s, a)\, da
+V_\pi(s) = \int \pi(a \mid s) \cdot Q_\pi(s, a) \ da
 $$
 
 它和第 1 节的形式一一对应：
@@ -54,7 +54,7 @@ $$
 
 具体做法：
 
-1. 让 agent 按当前策略 $\pi(a \mid s)$ 随机抽 $N$ 个动作：$a^{(1)}, a^{(2)}, \dots, a^{(N)}$。
+1. 让 agent 按当前策略 $\pi(a \mid s)$ 随机抽 $N$ 个动作： $a^{(1)}, a^{(2)}, \dots, a^{(N)}$。
 2. 把这 $N$ 个动作分别输入 $Q$ 网络，得到 $Q_\pi(s, a^{(1)}), \dots, Q_\pi(s, a^{(N)})$。
 3. 求平均，得到 $V_\pi(s)$ 的近似：
 
@@ -68,7 +68,7 @@ $Q_\pi(s_t, a_t) = \mathbb{E}[U_t \mid S_t = s_t, A_t = a_t]$ 本身也是期望
 
 ### 小实验
 
-玩具设定：策略 $\pi(a \mid s) = \mathcal{N}(0, 0.5^2)$，$Q(s, a) = -(a - 1)^2$。这时解析解为 $V = -\left[(\mu - 1)^2 + \sigma^2\right] = -1.25$。
+玩具设定：策略 $\pi(a \mid s) = \mathcal{N}(0, 0.5^2)$， $Q(s, a) = -(a - 1)^2$。这时解析解为 $V = -\left[(\mu - 1)^2 + \sigma^2\right] = -1.25$。
 
 ```python
 import numpy as np
