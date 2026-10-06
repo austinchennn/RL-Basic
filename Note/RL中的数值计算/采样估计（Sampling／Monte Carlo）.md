@@ -11,7 +11,7 @@
 假设要计算函数 $f(x)$ 在概率密度函数 $p(x)$ 下的期望（也就是一个积分）：
 
 $$
-I = \int f(x)\, p(x)\, dx = \mathbb{E}_{X \sim p}\left[ f(X) \right]
+I = \int f(x) p(x) \ dx = \mathbb{E}_{X \sim p}\left[ f(X) \right]
 $$
 
 这个积分本质上就是随机变量 $f(X)$ 的数学期望 $\mathbb{E}[f(X)]$。根据**大数定律**，当样本数量足够多时，样本的算术平均会收敛到真实期望。
@@ -41,7 +41,7 @@ $$
 连续动作空间下，状态价值函数是一个积分（见 [04-价值函数.md](../基础概念/04-价值函数.md)）：
 
 $$
-V_\pi(s) = \int \pi(a \mid s) \cdot Q_\pi(s, a)\, da
+V_\pi(s) = \int \pi(a \mid s) \cdot Q_\pi(s, a) \ da
 $$
 
 它和第 1 节的形式一一对应：
